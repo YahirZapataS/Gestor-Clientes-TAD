@@ -5,17 +5,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/searchClient.js"></script>
     <title>Comedor TAD</title>
 </head>
 
 <body>
-    <h2>Comedor TAD - Menú</h2>
-    <button onclick="location.href='add-credit.html'">Registrar Productos</button>
-    <button onclick="location.href='clients.html'">Clientes</button>
-    <button onclick="location.href='reports.html'">Reportes</button>
-    <button onclick="logout()">Cerrar sesión</button>
+    <!-- Contenedor del encabezado con menú -->
+    <div class="header-with-menu">
+        <h2>Comedor TAD - Menú</h2>
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+    </div>
 
-    <script type="module" src="js/auth.js"></script>
+    <!-- Menú hamburguesa -->
+    <div class="hamburger-menu">
+        <input type="checkbox" id="menu-toggle">
+        <nav class="menu-links">
+            <button onclick="location.href='add-credit.html'">Registrar Productos</button>
+            <button onclick="location.href='clients.html'">Clientes</button>
+            <button onclick="location.href='reports.html'">Reportes</button>
+            <button onclick="logout()">Cerrar sesión</button>
+        </nav>
+    </div>
+
+    <h2>Buscar Cliente</h2>
+
+    <input type="text" id="searchInput" placeholder="Buscar por nombre o ID">
+    <div id="searchResults"></div>
+
 </body>
 
 </html>

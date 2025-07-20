@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cuenta del Cliente</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="js/clientAccount.js"></script>
+</head>
+
+<body>
+
+    <h2 id="clientName">Cuenta de Cliente</h2>
+    <p id="creditInfo"></p>
+
+    <div id="recordsContainer">
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cant.</th>
+                    <th>Total</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody id="recordsTableBody">
+                <!-- Registros aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <p id="totalAmount" style="margin-top: 20px; font-weight: bold;"></p>
+    <div class="payment-buttons">
+        <button id="payCashBtn">Pagar en efectivo</button>
+        <button id="payTransferBtn">Pagar por transferencia</button>
+    </div>
+
+    <button class="btnBack" type="button" onclick="location.href='index.html'">Atrás</button>
+</body>
+
+</html>

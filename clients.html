@@ -4,22 +4,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clients - Comedor TAD</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Clients</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="js/clients.js"></script>
 </head>
 
 <body>
     <h2>Client Management</h2>
 
     <form id="clientForm">
-        <input type="text" id="clientName" placeholder="Client Name" required />
-        <button type="submit">Add Client</button>
+        <input type="text" id="clientName" placeholder="Nombre del Cliente" required />
+        <button type="submit">Agregar Cliente</button>
+        <div class="button-container">
+            <button class="btnBack" type="button" onclick="location.href='index.html'">Atrás</button>
+        </div>
     </form>
 
-    <h3>Registered Clients</h3>
-    <ul id="clientsList"></ul>
-
-    <script type="module" src="js/clients.js"></script>
+    <div id="clientsList"></div>
 </body>
 
 </html>
