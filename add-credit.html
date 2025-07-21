@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrar Crédito</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="js/addCredit.js"></script>
+</head>
+
+<body>
+
+    <h2>Agregar Productos a Cliente</h2>
+
+    <!-- Buscar cliente -->
+    <input type="text" id="clientSearch" placeholder="Buscar cliente por nombre o ID" />
+    <div id="clientInfo"></div>
+
+    <!-- Lista de productos -->
+    <h3>Categorías</h3>
+    <div id="categoryList"></div>
+
+
+    <!-- Carrito -->
+    <h3>Carrito</h3>
+    <div id="cartContainer">
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cant.</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="cartTableBody"></tbody>
+        </table>
+        <p id="cartTotal"></p>
+        <button id="saveBtn">Guardar Nota</button>
+    </div>
+
+    <div class="button-container">
+        <button class="btnBack" onclick="history.back()">Atrás</button>
+    </div>
+</body>
+
+</html>

@@ -13,25 +13,32 @@
 <body>
     <!-- Contenedor del encabezado con menú -->
     <div class="header-with-menu">
-        <h2>Comedor TAD - Menú</h2>
+        <h1>Comedor TAD - Menú</h1>
         <label for="menu-toggle" class="menu-icon">&#9776;</label>
     </div>
-
     <!-- Menú hamburguesa -->
     <div class="hamburger-menu">
         <input type="checkbox" id="menu-toggle">
         <nav class="menu-links">
-            <button onclick="location.href='add-credit.html'">Registrar Productos</button>
+            <button onclick="location.href='add-credit.html'">Agregar a Cuenta</button>
             <button onclick="location.href='clients.html'">Clientes</button>
             <button onclick="location.href='reports.html'">Reportes</button>
-            <button onclick="logout()">Cerrar sesión</button>
+            <button onclick="location.href='add-product.html'">Añadir Productos al Sistema</button>
         </nav>
     </div>
 
     <h2>Buscar Cliente</h2>
-
     <input type="text" id="searchInput" placeholder="Buscar por nombre o ID">
     <div id="searchResults"></div>
+
+    <section class="summarySection">
+        <h3>Crédito total en uso:</h3>
+        <p id="totalDebt">$0.00</p>
+
+        <h3>Clientes con mayor deuda:</h3>
+        <ul id="topDebtorsList"></ul>
+    </section>
+
 
 </body>
 

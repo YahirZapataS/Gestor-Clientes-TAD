@@ -51,3 +51,47 @@ window.viewAccount = (id) => {
     // Redirige a la vista individual del cliente con su ID
     location.href = `client-account.html?id=${id}`;
 };
+
+async function showClientSummary() {
+    const querySnapshot = await getDocs(collection(db, "clients"));
+    let totalDebt = 0;
+    const clients = [];
+
+    querySnapshot.forEach(doc => {
+        const data = doc.data();
+        const debt = data.currentDebt || 0;
+        totalDebt += debt;
+        clients.push({ name: data.name, id: data.id, debt });
+    });
+
+    // Mostrar suma total
+    document.getElementById("totalDebt").textContent = `$${totalDebt.toFixed(2)}`;
+
+    // Obtener top 3 deudores
+    const topDebtors = clients
+        .sort((a, b) => b.debt - a.debt)
+        .slice(0, 3);
+
+    const list = document.getElementById("topDebtorsList");
+    list.innerHTML = "";
+
+    topDebtors.forEach(client => {
+        const li = document.createElement("li");
+
+        const link = document.createElement("a");
+        link.textContent = `${client.name} - $${client.debt.toFixed(2)}`;
+        link.href = `client-account.html?id=${client.id}`;
+        link.style.textDecoration = "none";
+        link.style.color = "#2980b9";
+        link.style.fontWeight = "500";
+
+        link.addEventListener("mouseover", () => link.style.textDecoration = "underline");
+        link.addEventListener("mouseout", () => link.style.textDecoration = "none");
+
+        li.appendChild(link);
+        list.appendChild(li);
+    });
+}
+
+
+showClientSummary();

@@ -40,7 +40,11 @@ form input {
     border-radius: 8px;
 }
 
-form button {
+form button,
+#btnSaveAll,
+#btnCategories,
+#btnAddOnCategory,
+#saveBtn {
     padding: 12px;
     font-size: 1rem;
     background-color: #019874;
@@ -62,7 +66,8 @@ form button:hover {
     padding: 0 10px;
 }
 
-#searchInput {
+#searchInput,
+#clientSearch {
     width: 100%;
     padding: 12px;
     margin: 12px 0;
@@ -280,4 +285,172 @@ tr:last-child td {
 
 #payTransferBtn:hover {
     background-color: #076bb4;
+}
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-form input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.product-form button {
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #00b894;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.product-form button:hover {
+    background-color: #019874;
+}
+
+#productTable {
+    width: 100%;
+    max-width: 500px;
+    margin: 10px auto;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#productTable th,
+#productTable td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#productTable th {
+    background-color: #00b894;
+    color: white;
+}
+
+#productTable td:last-child {
+    text-align: center;
+}
+
+.groupedTable {
+    width: 100%;
+    max-width: 500px;
+    margin: 5px auto 20px;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.groupedTable th,
+.groupedTable td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.groupedTable th {
+    background-color: #00b894;
+    color: white;
+}
+
+#btnSaveAll,
+#addToListBtn,
+#saveBtn {
+    width: 100%;
+}
+
+#btnSaveAll,
+#saveBtn {
+    margin-top: 10px;
+}
+
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.loaderContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #00b894;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 12px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.summarySection {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.summarySection h3 {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+#totalDebt {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #2c3e50;
+}
+
+#topDebtorsList {
+    list-style: none;
+    padding-left: 0;
+}
+
+#topDebtorsList li {
+    padding: 4px 0;
+    font-size: 1rem;
+}
+
+#topDebtorsList a:hover {
+    text-decoration: underline;
+    color: #1c5980;
 }

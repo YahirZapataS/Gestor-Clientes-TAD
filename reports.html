@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reportes - Comedor TAD</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="module" src="js/reports.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+</head>
+
+<body>
+    <h2>Reportes del Comedor</h2>
+
+    <section class="reportSection">
+        <h3>Crédito total en uso:</h3>
+        <p id="totalCreditUsed">$0.00</p>
+    </section>
+
+    <section class="reportSection">
+        <h3>Historial por Cliente</h3>
+        <input type="number" id="clientIdInput" placeholder="ID del cliente" />
+        <button id="fetchClientReportBtn">Ver historial</button>
+        <div id="clientReportResult"></div>
+    </section>
+
+    <section class="reportSection">
+        <h3>Pagos Realizados</h3>
+        <button id="loadPaymentsBtn">Ver todos los pagos</button>
+        <div id="paymentsList"></div>
+    </section>
+    <div class="button-container">
+        <button class="btnBack" onclick="history.back()">Atrás</button>
+    </div>
+</body>
+
+</html>

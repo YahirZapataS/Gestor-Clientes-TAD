@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agregar Producto</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="js/addProduct.js"></script>
+</head>
+
+<body>
+
+    <h2>Agregar Productos a Sistema</h2>
+
+    <form id="productForm" class="product-form">
+        <input type="text" id="productName" placeholder="Nombre del producto" required />
+        <input type="text" id="productCategory" placeholder="Categoría" required />
+        <div style="display: flex; gap: 10px;">
+            <button type="button" id="addToListBtn">Agregar a lista</button>
+        </div>
+    </form>
+    <button id="btnSaveAll" type="submit">Guardar todos</button>
+
+    <!-- Tabla temporal -->
+    <h3>Productos por guardar</h3>
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="productTableBody"></tbody>
+    </table>
+    <div class="button-container">
+        <button class="btnBack" onclick="history.back()">Atrás</button>
+    </div><br>
+
+    <h3>Productos en Sistema</h3>
+    <div id="groupedProductsContainer"></div>
+</body>
+
+</html>

@@ -80,8 +80,8 @@ async function loadClients() {
         <span class="client-id">ID: ${c.id}</span>
       </div>
       <div class="client-actions">
-        <button class="btn-edit" onclick="editClient('${c.id}', '${c.name}')">Edit</button>
-        <button class="btn-delete" onclick="deleteClient('${c.id}', '${c.name}')">Delete</button>
+        <button class="btn-edit" onclick="editClient('${c.id}', '${c.name}')">Editar</button>
+        <button class="btn-delete" onclick="deleteClient('${c.id}', '${c.name}')">Eliminar</button>
       </div>
     `;
         clientsList.appendChild(card);
