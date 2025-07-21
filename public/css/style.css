@@ -44,7 +44,8 @@ form button,
 #btnSaveAll,
 #btnCategories,
 #btnAddOnCategory,
-#saveBtn {
+#saveBtn,
+#btnMenu {
     padding: 12px;
     font-size: 1rem;
     background-color: #019874;
@@ -57,6 +58,10 @@ form button,
 
 form button:hover {
     background-color: #019874;
+}
+
+#clientName {
+    margin-top: 10px;
 }
 
 /* Lista de clientes */
@@ -176,54 +181,6 @@ form button:hover {
 .header-with-menu h2 {
     font-size: 1.4rem;
     margin: 0;
-}
-
-/* Menú hamburguesa compacto */
-.menu-icon {
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: inline-block;
-    padding: 10px;
-    background-color: #00b894;
-    color: white;
-    border-radius: 8px;
-}
-
-/* Ocultar checkbox */
-#menu-toggle {
-    display: none;
-}
-
-/* Menú oculto por defecto */
-.menu-links {
-    display: none;
-    flex-direction: column;
-    margin-top: 10px;
-    text-align: left;
-    width: 90%;
-    max-width: 400px;
-    margin-inline: auto;
-}
-
-#menu-toggle:checked+.menu-links {
-    display: flex;
-}
-
-.menu-links button {
-    background-color: #00b894;
-    color: white;
-    border: none;
-    padding: 14px;
-    margin: 5px 0;
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    text-align: left;
-    transition: background-color 0.2s ease;
-}
-
-.menu-links button:hover {
-    background-color: #019874;
 }
 
 table {
@@ -370,13 +327,19 @@ tr:last-child td {
 
 #btnSaveAll,
 #addToListBtn,
-#saveBtn {
+#saveBtn,
+#btnMenu {
     width: 100%;
 }
 
 #btnSaveAll,
 #saveBtn {
     margin-top: 10px;
+}
+
+#btnMenu,
+.btnBack {
+    margin-bottom: 10px;
 }
 
 #loadingOverlay {
@@ -453,4 +416,20 @@ tr:last-child td {
 #topDebtorsList a:hover {
     text-decoration: underline;
     color: #1c5980;
+}
+
+/* Estilo responsivo para SweetAlert2 */
+.swal2-popup {
+    font-size: 1rem !important;
+    width: 90% !important;
+    max-width: 400px !important;
+    box-sizing: border-box;
+}
+
+.swal2-title {
+    font-size: 1.3rem !important;
+}
+
+.swal2-input {
+    font-size: 1rem !important;
 }

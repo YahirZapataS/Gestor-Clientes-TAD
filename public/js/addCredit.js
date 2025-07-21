@@ -114,7 +114,8 @@ window.addProductPrompt = async (productId, productName) => {
             return { price, quantity };
         },
         confirmButtonText: "Agregar al carrito",
-        showCancelButton: true
+        showCancelButton: true,
+        scrollbarPadding: false
     });
 
     if (!formValues) return;

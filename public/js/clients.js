@@ -45,7 +45,7 @@ clientForm.addEventListener("submit", async (e) => {
             id: newId,
             name: rawName,
             nameLower: name,
-            creditLimit: 1000,
+            creditLimit: 2000,
             currentDebt: 0,
             createdAt: new Date()
         };
