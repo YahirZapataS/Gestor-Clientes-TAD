@@ -8,7 +8,7 @@ import {
     doc,
     setDoc,
     deleteDoc,
-    updateDoc
+    updateDoc, orderBy
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const clientForm = document.getElementById("clientForm");
@@ -68,7 +68,7 @@ clientForm.addEventListener("submit", async (e) => {
 
 async function loadClients() {
     clientsList.innerHTML = "";
-    const snapshot = await getDocs(clientsRef);
+    const snapshot = await getDocs(query(clientsRef, orderBy("id")));
 
     snapshot.forEach(doc => {
         const c = doc.data();
