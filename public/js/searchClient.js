@@ -34,15 +34,15 @@ searchInput.addEventListener("input", async () => {
         const div = document.createElement("div");
         div.className = "client-card";
         div.innerHTML = `
-      <div class="client-info">
-        <span class="client-name">${c.name}</span>
-        <span class="client-id">ID: ${c.id}</span>
-        <span class="client-total-amount">Total: ${c.currentDebt}
-      </div>
-      <div class="client-actions">
-        <button class="btn-edit" onclick="viewAccount(${c.id})">Ver Cuenta</button>
-      </div>
-    `;
+                            <div class="client-info">
+                                <span class="client-name">${c.name}</span>
+                                <span class="client-id">ID: ${c.id}</span>
+                                <span class="client-total-amount">Total: ${c.currentDebt}
+                            </div>
+                            <div class="client-actions">
+                                <button class="btn-edit" onclick="viewAccount(${c.id})">Ver Cuenta</button>
+                            </div>
+                        `;
         searchResults.appendChild(div);
     });
 });
