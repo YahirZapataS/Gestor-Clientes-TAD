@@ -270,8 +270,6 @@ async function exportGeneralReportPDF() {
         let lastTimestamp = null;
 
         const [creditsSnap, paymentsSnap] = await Promise.all([
-            // NOTA: Aquí la colección es "creditRecords" según tu código anterior.
-            // La ajustaré para que coincida con la lógica de la función fetchClientHistory.
             getDocs(
                 query(
                     collection(db, "creditRecords"),

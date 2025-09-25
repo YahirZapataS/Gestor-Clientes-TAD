@@ -1,12 +1,11 @@
 import { db } from "./firebaseConfig.js";
 import {
-    collection, doc, getDoc, getDocs, query, where, updateDoc, addDoc
+    collection, doc, getDoc, getDocs, query, where, updateDoc, addDoc, orderBy
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import {
     getStorage, ref, uploadBytes, getDownloadURL
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-// Obtener ID desde la URL
 const params = new URLSearchParams(window.location.search);
 const clientId = params.get("id");
 
@@ -34,12 +33,11 @@ async function loadClientAccount() {
         }
 
         const client = clientSnap.data();
-        currentClient = client; // Guardamos cliente
+        currentClient = client;
         clientNameEl.textContent = `Cuenta de ${client.name}`;
         creditInfoEl.textContent = `Crédito usado: $${client.currentDebt} / Límite: $${client.creditLimit}`;
-
-        // 2. Obtener registros del cliente
-        const q = query(collection(db, "creditRecords"), where("clientId", "==", Number(clientId)));
+        
+        const q = query(collection(db, "creditRecords"), where("clientId", "==", Number(clientId)), orderBy("date", "desc"));
         const snapshot = await getDocs(q);
 
         let total = 0;
@@ -109,12 +107,12 @@ async function loadClientAccount() {
                 const { value: formValues } = await Swal.fire({
                     title: "Pago por transferencia",
                     html: `
-      <label>Monto a transferir:</label>
-      <input type="number" id="transferAmount" class="swal2-input" placeholder="Ej. 100" min="1" />
+                            <label>Monto a transferir:</label>
+                            <input type="number" id="transferAmount" class="swal2-input" placeholder="Ej. 100" min="1" />
 
-      <label style="margin-top:10px;">Comprobante:</label>
-      <input type="file" id="transferFile" class="swal2-file" accept="image/*" style="margin-top: 10px;" />
-    `,
+                            <label style="margin-top:10px;">Comprobante:</label>
+                            <input type="file" id="transferFile" class="swal2-file" accept="image/*" style="margin-top: 10px;" />
+                        `,
                     focusConfirm: false,
                     preConfirm: () => {
                         const amount = parseFloat(document.getElementById("transferAmount").value);
@@ -146,12 +144,8 @@ async function loadClientAccount() {
         async function processPayment(amount, method) {
             try {
                 const newDebt = currentClient.currentDebt - amount;
-
-                // 1. Actualizar cliente
                 const clientRef = doc(db, "clients", clientId);
                 await updateDoc(clientRef, { currentDebt: newDebt });
-
-                // 2. Registrar pago
                 await addDoc(collection(db, "payments"), {
                     clientId: currentClient.id,
                     clientName: currentClient.name,
@@ -174,18 +168,15 @@ async function loadClientAccount() {
             try {
                 overlay.style.display = "flex";
 
-                // 1. Subir imagen a Storage
                 const fileName = `comprobantes/${currentClient.id}_${Date.now()}`;
                 const fileRef = ref(storage, fileName);
                 await uploadBytes(fileRef, file);
                 const fileURL = await getDownloadURL(fileRef);
 
-                // 2. Actualizar deuda
                 const newDebt = currentClient.currentDebt - amount;
                 const clientRef = doc(db, "clients", clientId);
                 await updateDoc(clientRef, { currentDebt: newDebt });
 
-                // 3. Registrar pago
                 await addDoc(collection(db, "payments"), {
                     clientId: currentClient.id,
                     clientName: currentClient.name,
