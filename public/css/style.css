@@ -45,7 +45,9 @@ form button,
 #btnCategories,
 #btnAddOnCategory,
 #saveBtn,
-#btnMenu {
+#btnMenu,
+#btnReports,
+#btnAddProducts {
     padding: 12px;
     font-size: 1rem;
     background-color: #019874;
@@ -80,7 +82,6 @@ form button:hover {
     border: 1px solid #ccc;
     font-size: 1rem;
 }
-
 
 .client-card {
     background-color: #fff;
@@ -244,6 +245,12 @@ tr:last-child td {
     background-color: #076bb4;
 }
 
+#creditInfo, #totalAmount {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
 .product-form {
     display: flex;
     flex-direction: column;
@@ -328,7 +335,9 @@ tr:last-child td {
 #btnSaveAll,
 #addToListBtn,
 #saveBtn,
-#btnMenu {
+#btnMenu,
+#btnReports,
+#btnAddProducts {
     width: 100%;
 }
 
@@ -337,7 +346,22 @@ tr:last-child td {
     margin-top: 10px;
 }
 
+.button-row {
+    display: flex;
+    gap: 10px;
+}
+
+.button-row button {
+    flex: 1;
+}
+
+#btnReports, #btnAddProducts {
+    background-color: #b02425;
+}
+
 #btnMenu,
+#btnReports,
+#btnAddProducts,
 .btnBack {
     margin-bottom: 10px;
 }
