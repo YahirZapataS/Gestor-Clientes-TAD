@@ -13,11 +13,8 @@
 <body>
     <!-- Contenedor del encabezado con menú -->
     <div class="header-with-menu">
-        <h1>Comedor TAD - Clientes</h1>
+        <h1>Comedor TAD</h1>
     </div>
-
-    <button id="btnMenu" onclick="location.href='clients.html'">Clientes</button>
-    <button id="btnMenu" onclick="location.href='add-credit.html'">Agregar Productos a Cliente</button>
 
     <h2>Buscar Cliente</h2>
     <input type="text" id="searchInput" placeholder="Buscar por nombre o ID">
@@ -31,9 +28,12 @@
         <ul id="topDebtorsList"></ul>
     </section><br>
 
-    <button id="btnMenu" onclick="location.href='reports.html'">Reportes</button>
-    <button id="btnMenu" onclick="location.href='add-product.html'">Añadir Productos al Sistema</button>
-
+    <button id="btnMenu" onclick="location.href='clients.html'">Clientes</button>
+    <button id="btnMenu" onclick="location.href='add-credit.html'">Agregar Productos a Cliente</button>
+    <div class="button-row">
+        <button id="btnReports" onclick="location.href='reports.html'">Reportes</button>
+        <button id="btnAddProducts" onclick="location.href='add-product.html'">Productos del Sistema</button>
+    </div>
 </body>
 
 </html>

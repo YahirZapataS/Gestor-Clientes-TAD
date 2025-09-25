@@ -35,7 +35,7 @@ async function loadClientAccount() {
         const client = clientSnap.data();
         currentClient = client;
         clientNameEl.textContent = `Cuenta de ${client.name}`;
-        creditInfoEl.textContent = `Crédito usado: $${client.currentDebt} / Límite: $${client.creditLimit}`;
+        creditInfoEl.textContent = `Límite: $${client.creditLimit}`;
         
         const q = query(collection(db, "creditRecords"), where("clientId", "==", Number(clientId)), orderBy("date", "desc"));
         const snapshot = await getDocs(q);
@@ -48,12 +48,12 @@ async function loadClientAccount() {
             record.items.forEach(item => {
                 const row = document.createElement("tr");
                 row.innerHTML = `
-          <td>${item.name}</td>
-          <td>$${item.price}</td>
-          <td>${item.quantity}</td>
-          <td>$${item.price * item.quantity}</td>
-          <td>${date}</td>
-        `;
+                                    <td>${item.name}</td>
+                                    <td>$${item.price}</td>
+                                    <td>${item.quantity}</td>
+                                    <td>$${item.price * item.quantity}</td>
+                                    <td>${date}</td>
+                                `;
                 tableBody.appendChild(row);
                 total += item.price * item.quantity;
             });

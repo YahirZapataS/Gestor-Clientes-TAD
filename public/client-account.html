@@ -14,6 +14,14 @@
 
     <h2 id="clientName">Cuenta de Cliente</h2>
     <p id="creditInfo"></p>
+    <p id="totalAmount" style="margin-top: 20px; font-weight: bold;"></p>
+    
+    <div class="payment-buttons">
+        <button id="payCashBtn">Pagar en efectivo</button>
+        <button id="payTransferBtn">Pagar por transferencia</button>
+    </div>
+
+    <button class="btnBack" type="button" onclick="location.href='index.html'">Atrás</button>
 
     <div id="recordsContainer">
         <table>
@@ -31,14 +39,6 @@
             </tbody>
         </table>
     </div>
-
-    <p id="totalAmount" style="margin-top: 20px; font-weight: bold;"></p>
-    <div class="payment-buttons">
-        <button id="payCashBtn">Pagar en efectivo</button>
-        <button id="payTransferBtn">Pagar por transferencia</button>
-    </div>
-
-    <button class="btnBack" type="button" onclick="location.href='index.html'">Atrás</button>
     <div id="loadingOverlay">
         <div class="loaderContent">
             <span class="loader"></span>
