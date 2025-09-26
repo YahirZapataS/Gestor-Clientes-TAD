@@ -13,17 +13,14 @@
 <body>
 
     <h2>Agregar Productos a Cliente</h2>
-
-    <!-- Buscar cliente -->
     <input type="text" id="clientSearch" placeholder="Buscar cliente por nombre o ID" />
+    <div id="searchResults"></div>
     <div id="clientInfo"></div>
 
-    <!-- Lista de productos -->
     <h3>Categorías</h3>
     <div id="categoryList"></div>
 
 
-    <!-- Carrito -->
     <h3>Carrito</h3>
     <div id="cartContainer">
         <table>
@@ -42,7 +39,7 @@
     </div>
 
     <div class="button-container">
-        <button class="btnBack" onclick="history.back()">Atrás</button>
+        <button class="btnBack" onclick="window.location.href = 'index.html'">Atrás</button>
     </div>
 </body>
 

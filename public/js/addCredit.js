@@ -14,30 +14,56 @@ let selectedClient = null;
 let cart = [];
 let productsByCategory = {};
 
-// Buscar cliente al escribir
 clientSearch.addEventListener("input", async () => {
     const input = clientSearch.value.trim().toLowerCase();
-    if (input.length === 0) return;
+    const searchResultsEl = document.getElementById("searchResults");
 
-    const q = query(collection(db, "clients"));
+    if (input.length < 2) {
+        searchResultsEl.innerHTML = "";
+        return;
+    }
+
+    const q = query(
+        collection(db, "clients"),
+        where("nameLower", ">=", input),
+        where("nameLower", "<=", input + '\uf8ff')
+    );
+    
     const snapshot = await getDocs(q);
 
-    const match = snapshot.docs.find(doc => {
-        const data = doc.data();
-        return data.nameLower.includes(input) || String(data.id) === input;
-    });
+    searchResultsEl.innerHTML = "";
 
-    if (match) {
-        selectedClient = match.data();
-        clientInfo.innerHTML = `
-      <p><strong>Cliente:</strong> ${selectedClient.name}</p>
-      <p><strong>Crédito usado:</strong> $${selectedClient.currentDebt} / $${selectedClient.creditLimit}</p>
-    `;
+    if (snapshot.empty) {
+        searchResultsEl.innerHTML = "<p>No se encontraron clientes.</p>";
     } else {
-        selectedClient = null;
-        clientInfo.innerHTML = "<p style='color:red;'>Cliente no encontrado</p>";
+        snapshot.forEach(doc => {
+            const client = doc.data();
+            const resultItem = document.createElement("div");
+            resultItem.className = 'search-result-item';
+            resultItem.innerHTML = `
+                <span>${client.id}. ${client.name}</span>
+                <button id="btnSelectClient">Seleccionar</button>
+            `;
+            
+            resultItem.querySelector("button").addEventListener("click", () => {
+                selectClient(client);
+            });
+
+            searchResultsEl.appendChild(resultItem);
+        });
     }
 });
+
+function selectClient(client) {
+    selectedClient = client;
+
+    clientInfo.innerHTML = `
+                            <p><strong>Cliente:</strong> ${selectedClient.name}</p>
+                            <p><strong>Crédito usado:</strong> $${selectedClient.currentDebt}</p>
+                            `;
+    document.getElementById("searchResults").innerHTML = "";
+    clientSearch.value = "";
+}
 
 // Cargar productos
 async function loadProducts() {
@@ -74,11 +100,11 @@ async function showCategoryProducts(category) {
     const products = productsByCategory[category];
 
     const html = products.map((p, index) => `
-    <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-      <span>${p.name}</span>
-      <button id="btnAddOnCategory" onclick="addProductPrompt('${p.id}', '${p.name}')">Agregar</button>
-    </div>
-  `).join("");
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+        <span>${p.name}</span>
+        <button id="btnAddOnCategory" onclick="addProductPrompt('${p.id}', '${p.name}')">Agregar</button>
+        </div>
+    `).join("");
 
     Swal.fire({
         title: `Productos: ${category}`,
@@ -95,12 +121,12 @@ window.addProductPrompt = async (productId, productName) => {
     const { value: formValues } = await Swal.fire({
         title: `Agregar ${productName}`,
         html: `
-      <label style="display:block; margin-bottom:6px;">Precio:</label>
-      <input type="number" id="swal-price" class="swal2-input" min="0.01" step="0.01" placeholder="Precio unitario" />
+        <label style="display:block; margin-bottom:6px;">Precio:</label>
+        <input type="number" id="swal-price" class="swal2-input" min="0.01" step="0.01" placeholder="Precio unitario" />
 
-      <label style="display:block; margin-top:12px; margin-bottom:6px;">Cantidad:</label>
-      <input type="number" id="swal-quantity" class="swal2-input" min="1" step="1" placeholder="Cantidad" value="1" />
-    `,
+        <label style="display:block; margin-top:12px; margin-bottom:6px;">Cantidad:</label>
+        <input type="number" id="swal-quantity" class="swal2-input" min="1" step="1" placeholder="Cantidad" value="1" />
+        `,
         focusConfirm: false,
         preConfirm: () => {
             const price = parseFloat(document.getElementById("swal-price").value);
@@ -135,10 +161,6 @@ window.addProductPrompt = async (productId, productName) => {
 
     renderCart();
 };
-
-
-
-
 
 // Mostrar carrito
 function renderCart() {

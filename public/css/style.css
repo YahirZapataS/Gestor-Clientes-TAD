@@ -47,7 +47,8 @@ form button,
 #saveBtn,
 #btnMenu,
 #btnReports,
-#btnAddProducts {
+#btnAddProducts,
+#btnSelectClient {
     padding: 12px;
     font-size: 1rem;
     background-color: #019874;
@@ -245,7 +246,8 @@ tr:last-child td {
     background-color: #076bb4;
 }
 
-#creditInfo, #totalAmount {
+#creditInfo,
+#totalAmount {
     text-align: center;
     font-size: 25px;
     font-weight: bold;
@@ -355,7 +357,8 @@ tr:last-child td {
     flex: 1;
 }
 
-#btnReports, #btnAddProducts {
+#btnReports,
+#btnAddProducts {
     background-color: #b02425;
 }
 
@@ -364,6 +367,12 @@ tr:last-child td {
 #btnAddProducts,
 .btnBack {
     margin-bottom: 10px;
+}
+
+#btnSelectClient {
+    padding: 5px 10px;
+    cursor: pointer;
+    width: 50%;
 }
 
 #loadingOverlay {
@@ -467,7 +476,7 @@ tr:last-child td {
     background-color: #fff;
     font-size: 16px;
     font-family: inherit;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     transition: border-color 0.2s, box-shadow 0.2s;
     appearance: none;
     -webkit-appearance: none;
@@ -483,4 +492,14 @@ tr:last-child td {
     border-color: #6a5acd;
     outline: none;
     box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.2);
+}
+
+.search-result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-top: none;
+    background-color: #fff;
 }
